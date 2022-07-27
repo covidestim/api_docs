@@ -19,12 +19,12 @@ complex queries than what we show here using the syntax explained in the
 
 The four endpoints we support are:
 
-- [`/runs`](#runs) - all runs
-- [`/latest_runs`](#latest_runs) - latest runs for each county/state
-- [`/historical_runs`](#historical_runs) - historical runs for each county/state
-- [`/enclosed_runs`](#enclosed_runs) - runs for counties in a particular state or states
+- [`/runs` - all runs](#runs)
+- [`/latest_runs` - latest runs for each county/state](#latest_runs)
+- [`/historical_runs` - historical runs for each county/state](#historical_runs)
+- [`/enclosed_runs` - runs for counties in a particular state or states](#enclosed_runs)
 
-<h2 name="runs">Endpoint `/runs`: GET any model run</h2>
+<h2 id="runs">Endpoint `/runs`: GET any model run</h2>
 
 Without parameters, a call to the `/runs` endpoint returns a list of every model
 run in our database. This is not very useful, but we will use [filtering][pgrst]
@@ -82,7 +82,7 @@ notes:
 
 <iframe src="//api.apiembed.com/?source=https://covidestim.s3.amazonaws.com/api-har-files/1.json&targets=http:1.1,shell:curl,python:requests,javascript:fetch" frameborder="0" scrolling="no" width="80%" height="180px" seamless></iframe>
 
-<h2 name="latest_runs">Endpoint `/latest_runs`: newest run for each geography</h2>
+<h2 id="latest_runs">Endpoint `/latest_runs`: newest run for each geography</h2>
 
 **Example: Latest results for all states**
 
@@ -97,7 +97,7 @@ each array represents the latest model run for each U.S. state.
 
 *Query:* <a href="https://api2.covidestim.org/latest_runs?geo_type=eq.county&select=*,timeseries(*)" target="_blank"><code>/latest_runs?geo_type=eq.county&select=*,timeseries(*)</code></a>
 
-<h2 name="latest_enclosed_runs">Endpoint `/latest_enclosed_runs`: Latest runs for child geographies</h2>
+<h2 id="latest_enclosed_runs">Endpoint `/latest_enclosed_runs`: Latest runs for child geographies</h2>
 
 **Example: Latest `r_t`, `infections` estimates for all Connecticut counties**
 
@@ -109,7 +109,7 @@ timeseries results for each model run.*
 
 <iframe src="//api.apiembed.com/?source=https://covidestim.s3.amazonaws.com/api-har-files/4.json&targets=http:1.1,shell:curl,python:requests,javascript:fetch" frameborder="0" scrolling="no" width="80%" height="180px" seamless></iframe>
 
-<h2 name="historical_runs">Endpoint `/historical_runs`: Older runs for a particular geography</h2>
+<h2 id="historical_runs">Endpoint `/historical_runs`: Older runs for a particular geography</h2>
 
 **Example: Historical runs for Connecticut**
 
