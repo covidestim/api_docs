@@ -1,15 +1,15 @@
-# Covidestim API
-
-`https://api2.covidestim.org` serves a simple REST API that is freely available
-to the public, no authentication required.
+[https://api2.covidestim.org](https://api2.covidestim.org) serves a simple REST
+API that is freely available to the public, no authentication required. This page
+documents several useful queries. Additionally, if you have OpenAPI tools, our
+API serves an OpenAPI specification at the root URL.
 
 We have two requests for use of this API:
 
-- [Use our data dictionary][data_dict] to interpret model outcomes.
-
-- Don't abuse the API with unnecessary traffic, especially polling. Contact us
-  if you wish to use the API in a manner likely to generate large numbers of
-  requests.
+> - [Use our data dictionary][data_dict] to interpret model outcomes.
+> 
+> - Don't abuse the API with unnecessary traffic, especially polling. Contact us
+>   if you wish to use the API in a manner likely to generate large numbers of
+>   requests.
 
 This API is served by [PostgREST](https://postgrest.org). You can build more
 complex queries than what we show here using the syntax explained in the
@@ -22,13 +22,15 @@ There are four endpoints:
 - `/historical_runs`
 - `/enclosed_runs`
 
-## `/runs` endpoint
+## Endpoint `/runs`: GET any model run
+
+<iframe src="//api.apiembed.com/?source=https://covidestim.s3.amazonaws.com/api-har-files/1.json&targets=http:1.1,shell:curl,python:requests,javascript:fetch" frameborder="0" scrolling="no" width="100%" height="250px" seamless></iframe>
 
 Without parameters, a call to the `/runs` endpoint returns a list of every model
 run in our database. This is not very useful, but we will use [filtering][pgrst]
 and [embedding][pgrst_embed] to generate more valuable responses.
 
-**Example: Information for specific model runs**
+**Example:**
 
 *Query:* <a href="https://api2.covidestim.org/runs?geo_name=eq.Connecticut&run_date=gt.2022-07-01&select=*,timeseries(*)" target="_blank"><code>/runs?geo_name=eq.Connecticut&run_date=gt.2022-07-01&select=\*,timeseries(\*)</code></a>
 
@@ -66,22 +68,21 @@ and [embedding][pgrst_embed] to generate more valuable responses.
 This API response embeds model results under the `.timeseries` key. Important
 notes:
 
-- `.timeseries` is an array of timeseries results.
+- Each element of `.timeseries` contains estimates for the week ending on date `date`.
 
-  - Each element of this array contains our estimates for the week ending on date `date`.
+- `date` is always `YYYY-MM-DD`.
 
-- Throughout the API, `date` is always UTC, and `YYYY-MM-DD` formatted.
-
-- **Model runs of counties (`geo_type == 'county'`) do not have uncertainty
-  intervals**. As a result, all
-  `*_p2_5`, `*_p25`, `*_p75`, `*_p97_5` keys are set to `null`.
+- **Model runs of counties** *(`geo_type == 'county'`)* **do not have uncertainty
+  intervals**. All `*_p2_5`, `*_p25`, `*_p75`, `*_p97_5` keys are set to `null`.
 
 - `geo_name` can either be:
   - A state name
   - For counties only, a FIPS code. For example, `geo_name=eq.09009` selects
     model runs for New Haven County, Connecticut.
 
-## `/latest_runs` endpoint
+## Endpoint `/latest_runs`: newest run for each geography
+
+<iframe src="//api.apiembed.com/?source=https://covidestim.s3.amazonaws.com/api-har-files/2.json&targets=http:1.1,shell:curl,python:requests,javascript:fetch" frameborder="0" scrolling="no" width="100%" height="250px" seamless></iframe>
 
 **Example: Latest results for all states**
 
@@ -90,13 +91,13 @@ notes:
 This returns an array of model runs, as with the previous query, except that
 each array represents the latest model run for each U.S. state.
 
----
-
 **Example: Latest results for all counties**
 
 *Query:* <a href="https://api2.covidestim.org/latest_runs?geo_type=eq.county&select=*,timeseries(*)" target="_blank"><code>/latest_runs?geo_type=eq.county&select=\*,timeseries(\*)</code></a>
 
-## `/latest_enclosed_runs` endpoint
+## Endpoint `/latest_enclosed_runs`: Latest runs for child geographies
+
+<iframe src="//api.apiembed.com/?source=https://covidestim.s3.amazonaws.com/api-har-files/4.json&targets=http:1.1,shell:curl,python:requests,javascript:fetch" frameborder="0" scrolling="no" width="100%" height="250px" seamless></iframe>
 
 **Example: Latest `r_t`, `infections` estimates for all Connecticut counties**
 
@@ -106,8 +107,9 @@ each array represents the latest model run for each U.S. state.
 Connecticut, embedding the `date`, `r_t`, and `infections` columns from the
 timeseries results for each model run.*
 
+## Endpoint `/historical_runs`: Older runs for a particular geography
 
-## `/historical_runs` endpoint
+<iframe src="//api.apiembed.com/?source=https://covidestim.s3.amazonaws.com/api-har-files/5.json&targets=http:1.1,shell:curl,python:requests,javascript:fetch" frameborder="0" scrolling="no" width="100%" height="250px" seamless></iframe>
 
 **Example: Historical runs for Connecticut**
 
