@@ -24,7 +24,7 @@ The four endpoints we support are:
 - **[`/latest_runs` - latest runs for each county/state](#latest_runs)**
   - [Example - `latest_runs?geo_type=eq.state&select=*,timeseries(*)`](#latest_runs_1)
   - [Example - `latest_runs?geo_type=eq.county&select=*,timeseries(*)`](#latest_runs_2)
-- **[`/enclosed_runs` - runs for counties in a particular state or states](#enclosed_runs)**
+- **[`/latest_enclosed_runs` - runs for counties in a particular state or states](#enclosed_runs)**
   - [Example - `/latest_enclosed_runs?parent_geo=eq.Connecticut&select=*,timeseries(date,r_t,infections)`](#latest_enclosed_runs_1)
 - **[`/historical_runs` - historical runs for each county/state](#historical_runs)**
   - [Example - `/historical_runs?geo_name=eq.Connecticut&select=*,timeseries(*)`](#historical_runs_1)
