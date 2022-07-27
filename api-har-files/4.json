@@ -1,0 +1,106 @@
+{
+  "log": {
+    "version": "1.2",
+    "creator": {
+      "name": "Firefox",
+      "version": "102.0.1"
+    },
+    "browser": {
+      "name": "Firefox",
+      "version": "102.0.1"
+    },
+    "pages": [
+      {
+        "startedDateTime": "2022-07-27T16:30:10.287-04:00",
+        "id": "page_3",
+        "title": "https://api2.covidestim.org/latest_enclosed_runs?parent_geo=eq.Connecticut&select=*,timeseries(date,r_t,infections)",
+        "pageTimings": {
+          "onContentLoad": 116,
+          "onLoad": 134
+        }
+      }
+    ],
+    "entries": [
+      {
+        "pageref": "page_3",
+        "startedDateTime": "2022-07-27T16:30:10.287-04:00",
+        "request": {
+          "bodySize": 0,
+          "method": "GET",
+          "url": "https://api2.covidestim.org/latest_enclosed_runs?parent_geo=eq.Connecticut&select=*,timeseries(date,r_t,infections)",
+          "httpVersion": "HTTP/2",
+          "headers": [
+          ],
+          "cookies": [
+          ],
+          "queryString": [
+            {
+              "name": "parent_geo",
+              "value": "eq.Connecticut"
+            },
+            {
+              "name": "select",
+              "value": "*,timeseries(date,r_t,infections)"
+            }
+          ],
+          "headersSize": 634
+        },
+        "response": {
+          "status": 200,
+          "statusText": "OK",
+          "httpVersion": "HTTP/2",
+          "headers": [
+            {
+              "name": "date",
+              "value": "Wed, 27 Jul 2022 20:30:10 GMT"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "name": "server",
+              "value": "postgrest/9.0.1.20220717 (pre-release)"
+            },
+            {
+              "name": "content-range",
+              "value": "0-7/*"
+            },
+            {
+              "name": "content-location",
+              "value": "/latest_enclosed_runs?parent_geo=eq.Connecticut&select=%2A%2Ctimeseries%28date%2Cr_t%2Cinfections%29"
+            },
+            {
+              "name": "X-Firefox-Spdy",
+              "value": "h2"
+            }
+          ],
+          "cookies": [],
+          "content": {
+            "mimeType": "application/vnd.mozilla.json.view; charset=utf-8",
+            "size": 22941,
+            "encoding": "base64",
+            "text": ""
+          },
+          "redirectURL": "",
+          "headersSize": 311,
+          "bodySize": 23252
+        },
+        "cache": {},
+        "timings": {
+          "blocked": 0,
+          "dns": 0,
+          "connect": 0,
+          "ssl": 0,
+          "send": 0,
+          "wait": 68,
+          "receive": 0
+        },
+        "time": 68,
+        "_securityState": "secure",
+        "serverIPAddress": "3.21.194.18",
+        "connection": "443"
+      }
+    ]
+  }
+}
