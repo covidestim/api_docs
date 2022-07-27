@@ -32,7 +32,7 @@ and [embedding][pgrst_embed] to generate more valuable responses.
 
 **Example:**
 
-*Query:* <a href="https://api2.covidestim.org/runs?geo_name=eq.Connecticut&run_date=gt.2022-07-01&select=*,timeseries(*)" target="_blank"><code>/runs?geo_name=eq.Connecticut&run_date=gt.2022-07-01&select=\*,timeseries(\*)</code></a>
+*Query:* <a href="https://api2.covidestim.org/runs?geo_name=eq.Connecticut&run_date=gt.2022-07-01&select=*,timeseries(*)" target="_blank"><code>/runs?geo_name=eq.Connecticut&run_date=gt.2022-07-01&select=*,timeseries(*)</code></a>
 
 *Query meaning: All Connecticut runs after July 1st, including timeseries results.*
 
@@ -86,7 +86,7 @@ notes:
 
 **Example: Latest results for all states**
 
-*Query:* <a href="https://api2.covidestim.org/latest_runs?geo_type=eq.state&select=*,timeseries(*)" target="_blank"><code>/latest_runs?geo_type=eq.state&select=\*,timeseries(\*)</code></a>
+*Query:* <a href="https://api2.covidestim.org/latest_runs?geo_type=eq.state&select=*,timeseries(*)" target="_blank"><code>/latest_runs?geo_type=eq.state&select=*,timeseries(*)</code></a>
 
 This returns an array of model runs, as with the previous query, except that
 each array represents the latest model run for each U.S. state.
@@ -95,13 +95,13 @@ each array represents the latest model run for each U.S. state.
 
 **Example: Latest results for all counties**
 
-*Query:* <a href="https://api2.covidestim.org/latest_runs?geo_type=eq.county&select=*,timeseries(*)" target="_blank"><code>/latest_runs?geo_type=eq.county&select=\*,timeseries(\*)</code></a>
+*Query:* <a href="https://api2.covidestim.org/latest_runs?geo_type=eq.county&select=*,timeseries(*)" target="_blank"><code>/latest_runs?geo_type=eq.county&select=*,timeseries(*)</code></a>
 
 ## Endpoint `/latest_enclosed_runs`: Latest runs for child geographies
 
 **Example: Latest `r_t`, `infections` estimates for all Connecticut counties**
 
-*Query:* <a href="https://api2.covidestim.org/latest_enclosed_runs?parent_geo=eq.Connecticut&select=*,timeseries(date,r_t,infections)" target="_blank"><code>/latest_enclosed_runs?parent_geo=eq.Connecticut&select=\*,timeseries(date,r_t,infections)</code></a>
+*Query:* <a href="https://api2.covidestim.org/latest_enclosed_runs?parent_geo=eq.Connecticut&select=*,timeseries(date,r_t,infections)" target="_blank"><code>/latest_enclosed_runs?parent_geo=eq.Connecticut&select=*,timeseries(date,r_t,infections)</code></a>
 
 *Query meaning: Latest runs for all geographies whose parent geography is
 Connecticut, embedding the `date`, `r_t`, and `infections` columns from the
@@ -113,7 +113,7 @@ timeseries results for each model run.*
 
 **Example: Historical runs for Connecticut**
 
-<a href="https://api2.covidestim.org/historical_runs?geo_name=eq.Connecticut&select=*,timeseries(*)" target="_blank"><code>/historical_runs?geo_name=eq.Connecticut&select=\*,timeseries(\*)</code></a>
+<a href="https://api2.covidestim.org/historical_runs?geo_name=eq.Connecticut&select=*,timeseries(*)" target="_blank"><code>/historical_runs?geo_name=eq.Connecticut&select=*,timeseries(*)</code></a>
 
 *Query meaning: The first run from every month, plus the latest four runs, for
 Connecticut, including timeseries results for each run.*
