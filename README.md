@@ -19,10 +19,15 @@ complex queries than what we show here using the syntax explained in the
 
 The four endpoints we support are:
 
-- [`/runs` - all runs](#runs)
-- [`/latest_runs` - latest runs for each county/state](#latest_runs)
-- [`/historical_runs` - historical runs for each county/state](#historical_runs)
-- [`/enclosed_runs` - runs for counties in a particular state or states](#enclosed_runs)
+- **[`/runs` - all runs](#runs)**
+  - [Example - `/runs?geo_name=eq.Connecticut&run_date=gt.2022-07-01&select=*,timeseries(*)`](#runs-1)
+- **[`/latest_runs` - latest runs for each county/state](#latest_runs)**
+  - [Example - `latest_runs?geo_type=eq.state&select=*,timeseries(*)`](#latest_runs_1)
+  - [Example - `latest_runs?geo_type=eq.county&select=*,timeseries(*)`](#latest_runs_2)
+- **[`/historical_runs` - historical runs for each county/state](#historical_runs)**
+  - [Example - `/historical_runs?geo_name=eq.Connecticut&select=*,timeseries(*)`](#historical_runs_1)
+- **[`/enclosed_runs` - runs for counties in a particular state or states](#enclosed_runs)**
+  - [Example - `/latest_enclosed_runs?parent_geo=eq.Connecticut&select=*,timeseries(date,r_t,infections)`](#enclosed_runs_1)
 
 <h2 id="runs">Endpoint <code>/runs</code>: GET any model run</h2>
 
@@ -30,7 +35,7 @@ Without parameters, a call to the `/runs` endpoint returns a list of every model
 run in our database. This is not very useful, but we will use [filtering][pgrst]
 and [embedding][pgrst_embed] to generate more valuable responses.
 
-**Example:**
+<strong id="runs-1">Example:</strong>
 
 *Query:* <a href="https://api2.covidestim.org/runs?geo_name=eq.Connecticut&run_date=gt.2022-07-01&select=*,timeseries(*)" target="_blank"><code>/runs?geo_name=eq.Connecticut&run_date=gt.2022-07-01&select=*,timeseries(*)</code></a>
 
@@ -84,7 +89,7 @@ notes:
 
 <h2 id="latest_runs">Endpoint <code>/latest_runs</code>: newest run for each geography</h2>
 
-**Example: Latest results for all states**
+<strong id="latest_runs_1">Example: Latest results for all states</strong>
 
 *Query:* <a href="https://api2.covidestim.org/latest_runs?geo_type=eq.state&select=*,timeseries(*)" target="_blank"><code>/latest_runs?geo_type=eq.state&select=*,timeseries(*)</code></a>
 
@@ -93,13 +98,13 @@ each array represents the latest model run for each U.S. state.
 
 <iframe src="//api.apiembed.com/?source=https://covidestim.s3.amazonaws.com/api-har-files/2.json&targets=http:1.1,shell:curl,python:requests,javascript:fetch" frameborder="0" scrolling="no" width="80%" height="180px" seamless></iframe>
 
-**Example: Latest results for all counties**
+<strong id="latest_runs_2">Example: Latest results for all counties</strong>
 
 *Query:* <a href="https://api2.covidestim.org/latest_runs?geo_type=eq.county&select=*,timeseries(*)" target="_blank"><code>/latest_runs?geo_type=eq.county&select=*,timeseries(*)</code></a>
 
 <h2 id="latest_enclosed_runs">Endpoint <code>/latest_enclosed_runs</code>: Latest runs for child geographies</h2>
 
-**Example: Latest `r_t`, `infections` estimates for all Connecticut counties**
+<strong id="latest_enclosed_runs_1">Example: Latest `r_t`, `infections` estimates for all Connecticut counties</strong>
 
 *Query:* <a href="https://api2.covidestim.org/latest_enclosed_runs?parent_geo=eq.Connecticut&select=*,timeseries(date,r_t,infections)" target="_blank"><code>/latest_enclosed_runs?parent_geo=eq.Connecticut&select=*,timeseries(date,r_t,infections)</code></a>
 
@@ -111,7 +116,7 @@ timeseries results for each model run.*
 
 <h2 id="historical_runs">Endpoint <code>/historical_runs</code>: Older runs for a particular geography</h2>
 
-**Example: Historical runs for Connecticut**
+<strong id="historical_runs_1">Example: Historical runs for Connecticut</strong>
 
 <a href="https://api2.covidestim.org/historical_runs?geo_name=eq.Connecticut&select=*,timeseries(*)" target="_blank"><code>/historical_runs?geo_name=eq.Connecticut&select=*,timeseries(*)</code></a>
 
