@@ -85,7 +85,11 @@ notes:
   - For counties only, a FIPS code. For example, `geo_name=eq.09009` selects
     model runs for New Haven County, Connecticut.
 
+Try it:
+
 <iframe src="//api.apiembed.com/?source=https://covidestim.s3.amazonaws.com/api-har-files/1.json&targets=http:1.1,shell:curl,python:requests,javascript:fetch" frameborder="0" scrolling="no" width="80%" height="180px" seamless></iframe>
+
+---
 
 <h2 id="latest_runs">Endpoint <code>/latest_runs</code>: newest run for each geography</h2>
 
@@ -96,11 +100,15 @@ notes:
 This returns an array of model runs, as with the previous query, except that
 each array represents the latest model run for each U.S. state.
 
+Try it:
+
 <iframe src="//api.apiembed.com/?source=https://covidestim.s3.amazonaws.com/api-har-files/2.json&targets=http:1.1,shell:curl,python:requests,javascript:fetch" frameborder="0" scrolling="no" width="80%" height="180px" seamless></iframe>
 
 <strong id="latest_runs_2">Example: Latest results for all counties</strong>
 
 *Query:* <a href="https://api2.covidestim.org/latest_runs?geo_type=eq.county&select=*,timeseries(*)" target="_blank"><code>/latest_runs?geo_type=eq.county&select=*,timeseries(*)</code></a>
+
+---
 
 <h2 id="latest_enclosed_runs">Endpoint <code>/latest_enclosed_runs</code>: Latest runs for child geographies</h2>
 
@@ -112,7 +120,11 @@ each array represents the latest model run for each U.S. state.
 Connecticut, embedding the `date`, `r_t`, and `infections` columns from the
 timeseries results for each model run.*
 
+Try it:
+
 <iframe src="//api.apiembed.com/?source=https://covidestim.s3.amazonaws.com/api-har-files/4.json&targets=http:1.1,shell:curl,python:requests,javascript:fetch" frameborder="0" scrolling="no" width="80%" height="180px" seamless></iframe>
+
+---
 
 <h2 id="historical_runs">Endpoint <code>/historical_runs</code>: Older runs for a particular geography</h2>
 
@@ -129,6 +141,8 @@ each geography, if they exist:
 
 - The 3 latest model runs, excluding the most recent run
 - First model run of each month
+
+Try it:
 
 <iframe src="//api.apiembed.com/?source=https://covidestim.s3.amazonaws.com/api-har-files/5.json&targets=http:1.1,shell:curl,python:requests,javascript:fetch" frameborder="0" scrolling="no" width="80%" height="180px" seamless></iframe>
 
